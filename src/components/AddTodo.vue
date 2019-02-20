@@ -19,7 +19,7 @@
 		},
 		props: ["updateData"],
 	      watch: { 
-	      	updateData: function(newProps, oldProps) { // watch it
+	      	updateData: function(newProps, oldProps) { 
 	          if (newProps !== oldProps) {
 		  			this.id = newProps.id;
 		  			this.title = newProps.title;
