@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<form v-on:submit="addTodo">
-			<input type="text" name="id" v-model="id" placeholder="id" />
 			<input type="text" name="title" v-model="title" placeholder="Title" />
 			<input type="submit" value="Add" v-if="!id" class="btn" />
 			<input type="submit" value="Update" v-if="id" class="btn" />
