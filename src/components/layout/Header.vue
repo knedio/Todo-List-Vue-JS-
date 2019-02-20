@@ -12,7 +12,7 @@
 
 <style scoped>
 	.header {
-		background: #333;
+		background: #000;
 		color: #fff;
 		text-align: center;
 		padding: 10px;

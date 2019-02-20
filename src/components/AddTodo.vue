@@ -3,11 +3,9 @@
 		<form v-on:submit="addTodo">
 			<input type="text" name="id" v-model="id" placeholder="id" />
 			<input type="text" name="title" v-model="title" placeholder="Title" />
-			<input type="submit" value="Submit" class="btn" />
+			<input type="submit" value="Add" v-if="!id" class="btn" />
+			<input type="submit" value="Update" v-if="id" class="btn" />
 		</form>
-		{{
-			updateData
-		}}
 	</div>
 </template>
 
@@ -21,11 +19,19 @@
 			}
 		},
 		props: ["updateData"],
+	      watch: { 
+	      	updateData: function(newProps, oldProps) { // watch it
+	          if (newProps !== oldProps) {
+		  			this.id = newProps.id;
+		  			this.title = newProps.title;
+		  		}
+	        }
+	      },
 		methods: {
 			addTodo(e) {
 				e.preventDefault();
 				if (!this.id) {
-					console.log('update');
+					console.log('add');
 					this.$emit('add-todo', this.title);
 					this.title = '';
 				}else{
@@ -35,12 +41,6 @@
 					this.title = '';
 				}
 			},
-		},
-		updated() {
-			if (this.updateData.id && !this.id) {
-				this.title = this.updateData.title
-				this.id = this.updateData.id
-			}
 		}
 	};
 </script>

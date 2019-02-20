@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <AddTodo v-on:add-todo="addTodo" v-on:update-todo="updateTodo" v-bind:updateData="updateTodo1" />
+    <AddTodo v-on:add-todo="addTodo" v-on:update-todo="updateTodo" v-bind:updateData="updateData" />
     <Todos 
       v-bind:todos="todos" 
       v-on:del-todo="deleteTodo"
@@ -42,7 +42,7 @@ export default {
           completed: false
         }
       ],
-      updateTodo1: []
+      updateData: []
     }
   },
   methods: {
@@ -57,10 +57,10 @@ export default {
         title,
         completed: false
       }
-      this.todos = [...this.todos,newTodo]
+      this.todos = [...this.todos,newTodo];
     },
     updateForm(todo){
-      this.updateTodo1 = todo;
+      this.updateData = todo;
       // console.log('test');
     },
     updateTodo(data){
@@ -69,15 +69,8 @@ export default {
           todo.title = data.title
         }
         return todo;
-      })
-      this.updateTodo1 = [];
-      // const update = this.todo.map( todo => {
-      //   if (todo.id === data.id) {
-      //    todo.title = data.title;
-      //   }
-      //   return todo;
-      // });
-      // this.todo = update;
+      });
+      this.updateData = [];
     }
   }
 };
